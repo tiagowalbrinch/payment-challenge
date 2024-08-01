@@ -1,52 +1,14 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
-`;
-
-const FormContainer = styled.div`
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledField = styled(Field)`
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const StyledButton = styled.button`
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-
-const ErrorMessageContainer = styled.div`
-  color: red;
-  margin-bottom: 10px;
-`;
+import {
+  Container,
+  ErrorMessageContainer,
+  ContentContainer,
+  StyledButton,
+  StyledField,
+  StyledForm,
+} from "./styled";
 
 const loginSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -73,7 +35,7 @@ interface AuthFormProps {
 export const AuthForm: React.FC<AuthFormProps> = ({ isLogin, onSubmit }) => {
   return (
     <Container>
-      <FormContainer>
+      <ContentContainer>
         <h2>{isLogin ? "Login" : "Register"}</h2>
         <Formik
           initialValues={{ username: "", password: "", confirmPassword: "" }}
@@ -109,7 +71,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ isLogin, onSubmit }) => {
             </StyledForm>
           )}
         </Formik>
-      </FormContainer>
+      </ContentContainer>
     </Container>
   );
 };

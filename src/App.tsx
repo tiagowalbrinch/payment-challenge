@@ -1,4 +1,3 @@
-import "./App.css";
 import { AuthForm } from "./pages/AuthForm";
 
 function App() {
